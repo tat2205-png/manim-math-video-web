@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b3b63">
+  <meta name="description" content="Manim Math Video Web — giao diện tạo video toán học từ đề bài.">
+  <title>Manim Math Video Web</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div id="app" class="app-shell">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div>
+        <h1>MANIM MATH VIDEO <span>WEB</span></h1>
+        <p>V1.5.0 · Stable Web Integration</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <div class="status-pill ok"><span></span> Web UI READY</div>
+      <div id="engineStatus" class="status-pill offline"><span></span> Engine OFFLINE</div>
+      <button class="btn btn-soft" data-action="health">Health Check</button>
+      <button class="btn btn-soft" data-nav="settings">Settings</button>
+    </div>
+  </header>
+
+  <section class="metrics">
+    <article class="metric"><span>Projects</span><strong id="mProjects">0</strong></article>
+    <article class="metric"><span>Solver Tasks</span><strong id="mSolver">0</strong></article>
+    <article class="metric"><span>QA</span><strong id="mQA">0</strong></article>
+    <article class="metric"><span>Preview</span><strong id="mPreview">0</strong></article>
+    <article class="metric"><span>Approved</span><strong id="mApproved">0</strong></article>
+    <article class="metric"><span>Final</span><strong id="mFinal">0</strong></article>
+  </section>
+
+  <section class="quickbar">
+    <span class="quick-label">NHANH</span>
+    <button id="quickPrimary" class="btn btn-primary">🚀 TURBO — TẠO VIDEO</button>
+    <button id="quickSecondary" class="btn btn-soft hidden">Mở Project</button>
+    <div class="quick-spacer"></div>
+    <button id="stopBtn" class="btn btn-danger" disabled>■ DỪNG</button>
+    <button id="resumeBtn" class="btn btn-soft" disabled>↻ TIẾP TỤC</button>
+  </section>
+
+  <main class="workspace">
+    <aside class="sidebar">
+      <section class="card">
+        <h2>1. ĐỀ BÀI</h2>
+        <div id="dropzone" class="dropzone" tabindex="0">
+          <div class="drop-icon">⇧</div>
+          <strong>KÉO WORD / PDF / ẢNH VÀO ĐÂY</strong>
+          <span>DOCX · PDF · PNG · JPG · WEBP · TXT · MD</span>
+          <button class="btn btn-primary" id="chooseFileBtn">Chọn file</button>
+          <input id="fileInput" type="file" hidden multiple accept=".docx,.pdf,.png,.jpg,.jpeg,.webp,.txt,.md">
+        </div>
+        <p id="fileHint" class="muted">Chưa chọn file.</p>
+        <button id="addQueueBtn" class="btn btn-wide btn-soft" disabled>Thêm vào Project Queue</button>
+      </section>
+
+      <section class="card">
+        <h2>2. ONE-CLICK PIPELINE</h2>
+        <div class="project-summary">
+          <div id="projectStateLine">Chưa có Project đang chọn.</div>
+          <strong id="pipelineTitle">Sẵn sàng</strong>
+          <p id="pipelineMessage">Chọn đề bài rồi tạo Project.</p>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-track"><div id="progressBar" class="progress-bar" style="width:0%"></div></div>
+          <span id="progressText">0%</span>
+        </div>
+        <div id="timeline" class="timeline">
+          <span data-step="input">Đề</span><i>→</i><span data-step="solver">Solver</span><i>→</i>
+          <span data-step="code">Code</span><i>→</i><span data-step="qa">QA</span><i>→</i>
+          <span data-step="preview">Preview</span><i>→</i><span data-step="review">Duyệt</span><i>→</i>
+          <span data-step="final">Final</span>
+        </div>
+        <p id="nextStep" class="next-step">Bước tiếp theo: Tạo Project</p>
+        <div class="context-panel">
+          <span id="contextEyebrow" class="context-eyebrow">SẴN SÀNG</span>
+          <strong id="contextTitle">Tạo video từ đề bài</strong>
+          <p id="contextMessage">Kết nối Secure Web Gateway để điều khiển Desktop Engine.</p>
+          <div class="context-actions">
+            <button id="contextPrimary" class="btn btn-success">🚀 TURBO — TẠO VIDEO</button>
+            <button id="contextSecondary" class="btn btn-soft hidden">Mở Project</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card compact">
+        <h2>3. PROJECT CONTROL</h2>
+        <p id="controlStatus" class="muted">Không có process đang chạy.</p>
+        <div class="row">
+          <button id="sideStopBtn" class="btn btn-danger" disabled>■ DỪNG</button>
+          <button id="sideResumeBtn" class="btn btn-soft" disabled>↻ TIẾP TỤC</button>
+        </div>
+      </section>
+
+      <button id="advancedToggle" class="advanced-toggle">⚙ Điều khiển nâng cao</button>
+      <section id="advancedPanel" class="card advanced-panel hidden">
+        <h2>ADVANCED</h2>
+        <div class="advanced-grid">
+          <button class="btn btn-soft" data-demo-stage="qa">Quality Gate</button>
+          <button class="btn btn-soft" data-demo-stage="preview">Preview</button>
+          <button class="btn btn-soft" data-demo-stage="review">Review</button>
+          <button class="btn btn-soft" data-demo-stage="final">Full HD</button>
+        </div>
+        <p class="muted">Advanced control được gửi qua Secure Web Gateway.</p>
+      </section>
+    </aside>
+
+    <section class="mainpanel">
+      <nav class="tabs">
+        <button class="tab active" data-nav="projects">Projects</button>
+        <button class="tab" data-nav="questions">Questions</button>
+        <button class="tab" data-nav="review">Review Center</button>
+        <button class="tab" data-nav="video">Video</button>
+        <button class="tab" data-nav="dashboard">Production Dashboard</button>
+        <button class="tab" data-nav="settings">Settings</button>
+      </nav>
+
+      <section id="view-projects" class="view active">
+        <div class="view-head">
+          <div><h2>Projects</h2><p>Quản lý Project và trạng thái pipeline.</p></div>
+          <div class="row">
+            <button id="refreshProjectsBtn" class="btn btn-soft">Refresh Projects</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>#</th><th>Project</th><th>Source</th><th>Mode</th><th>Status</th><th>Stage</th><th>Updated</th></tr></thead>
+            <tbody id="projectTableBody"></tbody>
+          </table>
+        </div>
+        <div id="emptyProjects" class="empty-state">
+          <div class="empty-icon">∑</div><h3>Chưa có Project</h3>
+          <p>Thả đề bài vào khung bên trái hoặc tạo Project mẫu để thử giao diện.</p>
+        </div>
+      </section>
+
+      <section id="view-questions" class="view">
+        <div class="view-head"><div><h2>Questions</h2><p>Theo dõi Code, QA, Preview và Final theo từng câu.</p></div></div>
+        <div id="questionCards" class="question-grid"></div>
+      </section>
+
+      <section id="view-review" class="view">
+        <div class="review-layout">
+          <div class="video-card">
+            <video id="previewPlayer" class="web-video" controls playsinline></video>
+            <div class="player-controls"><span id="previewPlayerLabel">Chọn câu PREVIEW_OK để xem.</span></div>
+          </div>
+          <aside class="review-side">
+            <h2>Human Review</h2>
+            <p>Preview thật từ Desktop Engine. Human Review vẫn bắt buộc.</p>
+            <div id="reviewQuestions"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="view-video" class="view">
+        <div class="video-library">
+          <video id="finalPlayer" class="web-video final-video" controls playsinline></video>
+          <h2 id="finalVideoTitle">Chưa có Final</h2>
+          <p id="finalVideoMessage">Final sẽ xuất hiện khi Desktop Engine hoàn tất.</p>
+          <div class="row">
+            <button class="btn btn-primary" id="loadFinalBtn" disabled>Nạp Final</button>
+            <button class="btn btn-soft" data-nav="dashboard">Mở Production Dashboard</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-dashboard" class="view">
+        <div class="view-head">
+          <div><h2>Production Dashboard</h2><p>Trạng thái Final và hiệu năng từ Desktop Engine.</p></div>
+          <span id="dashboardPhase" class="badge">IDLE</span>
+        </div>
+        <div class="dashboard-cards">
+          <article><span>Progress</span><strong id="dProgress">0%</strong></article>
+          <article><span>ETA</span><strong id="dEta">—</strong></article>
+          <article><span>Workers</span><strong id="dWorkers">0 / 2</strong></article>
+          <article><span>Render Cache</span><strong id="dCache">0 HIT</strong></article>
+        </div>
+        <div class="production-list" id="productionList"></div>
+      </section>
+
+      <section id="view-settings" class="view">
+        <div class="settings-grid">
+          <section class="settings-card">
+            <h2>Secure Web Gateway</h2>
+            <label>API Base URL
+              <input id="apiBaseInput" type="url" placeholder="https://your-ngrok-url.ngrok-free.dev/web-api">
+            </label>
+            <label>Pairing Code
+              <input id="pairCodeInput" inputmode="numeric" maxlength="6" placeholder="6 chữ số từ Desktop App">
+            </label>
+            <div class="row">
+              <button id="pairBtn" class="btn btn-primary">Pair Web ↔ Desktop</button>
+              <button id="disconnectBtn" class="btn btn-soft">Disconnect</button>
+            </div>
+            <p id="sessionStatus" class="muted">Chưa pair.</p>
+          </section>
+          <section class="settings-card">
+            <h2>Security</h2>
+            <p class="muted">GitHub Pages không chứa API key/Bearer secret cố định. Pairing Code tạo session token ngắn hạn trong trình duyệt.</p>
+            <button id="healthBtn" class="btn btn-soft">Gateway Health Check</button>
+          </section>
+          <section class="settings-card">
+            <h2>Solver Prompt</h2>
+            <textarea id="solverPromptBox" rows="10" readonly placeholder="Sau khi upload, Solver Prompt sẽ xuất hiện ở đây."></textarea>
+            <div class="row">
+              <button id="copySolverPromptBtn" class="btn btn-primary">Copy Solver Prompt</button>
+              <button id="openSolverBtn" class="btn btn-soft">Mở Solver trên Desktop</button>
+            </div>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+  <footer class="footer"><span>Manim Math Video Web V1.5.0</span><span>GitHub Pages + Secure Pairing + Desktop Engine</span></footer>
+  <div id="toast" class="toast" role="status"></div>
+</div>
+<script src="config/public-config.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

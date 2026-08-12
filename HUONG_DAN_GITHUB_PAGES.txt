@@ -1,0 +1,53 @@
+MANIM MATH VIDEO WEB V1.5.0 — GITHUB PAGES
+==========================================
+
+DEPLOY
+------
+1. Tạo repo:
+   manim-math-video-web
+
+2. Upload toàn bộ file của ZIP:
+   ManimMathWeb_V1_5_0_GitHubPages.zip
+
+3. index.html phải ở root repo.
+
+4. GitHub:
+   Settings → Pages → Source → GitHub Actions
+
+5. Chờ deploy xong.
+
+DESKTOP
+-------
+1. Cài Manim Math Video App V1.5.0.
+2. Chạy CONFIGURE_GITHUB_ORIGIN_V1_5_0.bat.
+3. Nhập GitHub username.
+4. Mở App → Web Integration.
+5. Start Web Gateway.
+6. Local Bridge + ngrok phải READY.
+7. Copy Public Web API URL.
+
+WEBSITE
+-------
+Settings:
+API Base URL:
+https://<ngrok-domain>/web-api
+
+Pairing Code:
+6 chữ số hiển thị trong Desktop App.
+
+Bấm:
+Pair Web ↔ Desktop
+
+SECURITY
+--------
+Không copy GPT bearer token vào website.
+Không copy ngrok authtoken vào website.
+Không commit secret lên GitHub.
+Session Web được cấp bằng Pairing Code.
+
+GPT ACTIONS
+-----------
+Vẫn dùng URL gốc:
+https://<ngrok-domain>
+
+Không thêm /web-api vào GPT Action schema.

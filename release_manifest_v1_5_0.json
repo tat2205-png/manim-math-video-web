@@ -1,0 +1,93 @@
+{
+  "product": "Manim Math Video Web",
+  "version": "1.5.0",
+  "type": "github_pages_secure_gateway_ui",
+  "file_count": 17,
+  "files": [
+    {
+      "path": ".github/workflows/pages.yml",
+      "size": 693,
+      "sha256": "ad0e1810fe0b280f916ac40f1695f93bc08b1be71d8180e448a7b1be8afcdcb6"
+    },
+    {
+      "path": ".nojekyll",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "HUONG_DAN_GITHUB_PAGES.txt",
+      "size": 1056,
+      "sha256": "fca18e313e9404dee3f583804c720d3a32ebc44fd288021083797d1a810c6143"
+    },
+    {
+      "path": "README.md",
+      "size": 1734,
+      "sha256": "959b982b86a2ed4d6ded63f1fa4fd79c0129bc00765bbb9a43afec5f9f5fa18a"
+    },
+    {
+      "path": "assets/favicon.svg",
+      "size": 199,
+      "sha256": "53399e2eccca3d8622e6454b82df8bb37c285ea9eead5d36d8724140ddc34fcc"
+    },
+    {
+      "path": "config/public-config.js",
+      "size": 141,
+      "sha256": "b729cb498ce3de07c556d3bc4edd28e79d8b526db971834e4719dfa9ee1a99f4"
+    },
+    {
+      "path": "css/app.css",
+      "size": 9528,
+      "sha256": "605831ba9822640eaf43d8f5d2782ea22fdad94faea10c62d2c41efa53eb14f0"
+    },
+    {
+      "path": "css/responsive.css",
+      "size": 1353,
+      "sha256": "02882ee1fd92d3732db815cf474dda7f19e2620920e79715753507cbc5c83dbf"
+    },
+    {
+      "path": "index.html",
+      "size": 11241,
+      "sha256": "36aea4a101c20a754d0ef5d23de4200b71632c91895f0f02a38438e2741e74b9"
+    },
+    {
+      "path": "js/api.js",
+      "size": 2981,
+      "sha256": "939dd92f22b10b95d9b7486a9132a125a2736588761e5655ee33018c1fa4c537"
+    },
+    {
+      "path": "js/app.js",
+      "size": 18841,
+      "sha256": "c0402ebdbefdd12d50d3aec39f3715c676882ba91516d40403fca792d48d65df"
+    },
+    {
+      "path": "js/production.js",
+      "size": 1281,
+      "sha256": "d0d283abd295d7e0196682868014072e7053aa95b3a46c4163dadb3a4764162e"
+    },
+    {
+      "path": "js/projects.js",
+      "size": 2324,
+      "sha256": "2af8d115165b84aea011fde78651a41ecf1c2353042e187a29ff6e1b7a2df4d5"
+    },
+    {
+      "path": "js/review.js",
+      "size": 868,
+      "sha256": "de707e49ecee261af79fcd8799186e8aa41739ca23b11c217db94f0c01c78836"
+    },
+    {
+      "path": "js/upload.js",
+      "size": 908,
+      "sha256": "86a113bca7b9937717ec6bae9145eb3796c967c2a253e5c03afefff27a1d84aa"
+    },
+    {
+      "path": "js/video.js",
+      "size": 609,
+      "sha256": "86af8a876efefd0876374a32a2c83bdacfccde3293d455c1db0c8c3871f5e6ea"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "size": 298,
+      "sha256": "1d6e3316c8635197ddfb09232831c5a8d0b1c62defdb8f340f72f709595e44f7"
+    }
+  ]
+}

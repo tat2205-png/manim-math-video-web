@@ -1,0 +1,15 @@
+{
+  "name": "Manim Math Video Web V1.5.0",
+  "short_name": "ManimMath",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#eef3f7",
+  "theme_color": "#0b3b63",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
